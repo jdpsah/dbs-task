@@ -55,38 +55,6 @@ export class AuthService {
     );
   }
 
-  createEmployee(value) {
-    return this.http.post(this.env.crud_URL + 'create',
-    {"name":"test","salary":"123","age":"23"}
-    ).pipe(
-      tap(response => {
-        debugger
-        console.log('response',response);
-        
-        return response;
-      }),
-    );
-  }
-
-  register(emailContent) {
-    return this.http.post(this.env.login_URL + 'v1/sessions/send_sutherland_poc_email',
-    emailContent
-    ).pipe(
-      tap(token => {
-        this.storage.set('token', token)
-        .then(
-          () => {
-            console.log('Token Stored');
-          },
-          error => console.error('Error storing item', error)
-        );
-        this.token = token;
-        this.isLoggedIn = true;
-        return token;
-      }),
-    );
-  }
-
   staticLogout() {
     this.storage.remove("token");
     this.isLoggedIn = false;

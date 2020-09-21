@@ -20,19 +20,7 @@ export class CrudoperationPage implements OnInit {
     public alertService:AlertService) { }
 
 
-    
-  createEmployee(form){
-    this.alertService.presentLoading()
-    this.service.createEmployee(form.value).subscribe((res)=>{
-      console.log(res);
-      this.alertService.dismissLoading();
-      this.menu.enable(true);
-      this.router.navigate(['']);
-      this.router.navigateByUrl('home');
-    },(error)=>{
-      this.alertService.dismissLoading();
-    });
-  }
+   
 
   //////////////////////////
   posts: any;  
